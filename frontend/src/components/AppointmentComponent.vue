@@ -16,6 +16,7 @@
                         <th>Appointment Description</th>
                         <th>Appointment Doctor</th>
                         <th>Appointment Patient</th>
+                        <th>Appointment Schedule</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,12 +25,14 @@
                         <td>Lorem Ipsum dolor</td>
                         <td>Dr Lorem</td>
                         <td>Lorem</td>
+                        <td>1/2/23</td>
                     </tr>
                     <tr>
                         <td>Lorem</td>
                         <td>Lorem Ipsum dolor</td>
                         <td>Dr Lorem</td>
                         <td>Lorem</td>
+                        <td>1/5/23</td>
                     </tr>
                 </tbody>
             </table>
