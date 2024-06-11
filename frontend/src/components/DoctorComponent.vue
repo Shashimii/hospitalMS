@@ -6,6 +6,7 @@
     <div class="content">
         <div class="content-header">
             <h2>List of Registered Doctors</h2>
+            <button class="form-btn" @click="toNew">New Doctor</button>
         </div>
 
         <div class="item-group">
@@ -14,6 +15,7 @@
                     <tr>
                         <th>Doctor Name</th>
                         <th>Doctor Email</th>
+                        <th>Doctor Contact Number</th>
                         <th>Doctor Profession</th>
                     </tr>
                 </thead>
@@ -21,11 +23,13 @@
                     <tr>
                         <td>Dr Lorem</td>
                         <td>Ipsum@gmail.com</td>
+                        <td>0932121321</td>
                         <td>Lorem Ipsum Mastery</td>
                     </tr>
                     <tr>
                         <td>Dr Lorem</td>
                         <td>Ipsum@gmail.com</td>
+                        <td>0932121321</td>
                         <td>Lorem Ipsum Mastery</td>
                     </tr>
                 </tbody>
@@ -66,6 +70,10 @@ export default {
             } else {
                 this.role = 'Patient';
             }
+        },
+
+        toNew() {
+            this.$router.push('/doctor-new')
         }
     },
 
@@ -87,6 +95,11 @@ export default {
     display: flex;
     flex: 1;
     flex-direction: column;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
 }
 
 .styled-table {

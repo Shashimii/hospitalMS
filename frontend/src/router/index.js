@@ -48,6 +48,13 @@ const routes = [
     component: AppointmentView,
     meta: {requiresAuth: true}
   },
+
+  {
+    path: '/doctor-new',
+    name: 'NewDoctor',
+    component: () => import('../components/NewDoctor.vue'),
+    meta: {requiresAuth: true}
+  },
   
 ]
 
