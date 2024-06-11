@@ -6,6 +6,7 @@ import DoctorView from '../views/DoctorView.vue'
 import PatientView from '../views/PatientView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import AppointmentView from '../views/AppointmentView.vue'
+import RecordView from '../views/RecordView.vue'
 
 const routes = [
   {
@@ -48,6 +49,13 @@ const routes = [
     component: AppointmentView,
     meta: {requiresAuth: true}
   },
+  {
+    path: '/medical-records',
+    name: 'records',
+    component: RecordView,
+    meta: {requiresAuth: true}
+  },
+  
 
   {
     path: '/doctor-new',
@@ -55,6 +63,25 @@ const routes = [
     component: () => import('../components/NewDoctor.vue'),
     meta: {requiresAuth: true}
   },
+  {
+    path: '/doctor-edit:doctorId',
+    name: 'EditDoctor',
+    component: () => import('../components/EditDoctor.vue'),
+    meta: { requiresAuth: true }
+  },
+
+  {
+    path: '/patient-new',
+    name: 'NewPatient',
+    component: () => import('../components/NewPatient.vue'),
+    meta: {requiresAuth: true}
+  },
+  {
+    path: '/patient-edit:patientId',
+    name: 'EditPatient',
+    component: () => import('../components/EditPatient.vue'),
+    meta: { requiresAuth: true }
+  }
   
 ]
 

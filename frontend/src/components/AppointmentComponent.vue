@@ -17,23 +17,28 @@
                         <th>Appointment Doctor</th>
                         <th>Appointment Patient</th>
                         <th>Appointment Schedule</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Lorem</td>
-                        <td>Lorem Ipsum dolor</td>
-                        <td>Dr Lorem</td>
-                        <td>Lorem</td>
-                        <td>1/2/23</td>
-                    </tr>
-                    <tr>
-                        <td>Lorem</td>
-                        <td>Lorem Ipsum dolor</td>
-                        <td>Dr Lorem</td>
-                        <td>Lorem</td>
-                        <td>1/5/23</td>
-                    </tr>
+                    <template v-if="appointmentList.length === 0">
+                        <tr>
+                            <td colspan="4" style="text-align: center">There is No Doctor 💫</td>
+                        </tr>
+                    </template>
+                    <template v-else>
+                        <tr v-for="appointmentList in appointmentList" :key="appointmentList.id">
+                            <td>{{ appointmentList.name }}</td>
+                            <td>{{ appointmentList.description }}</td>
+                            <td>{{ appointmentList.doctor }}</td>
+                            <td>{{ appointmentList.patient }}</td>
+                            <td>{{ appointmentList.schedule }}</td>
+                            <td>
+                                <button class="edit-btn" @click="toEdit(appointmentList.id)">📝 Edit</button>
+                                <button class="delete-btn" @click="toDelete(appointmentList.id)">🗑️ Delete</button>
+                            </td>
+                        </tr>
+                    </template>
                 </tbody>
             </table>
         </div>
@@ -44,11 +49,7 @@
 export default {
     name: 'AppointmentComponent',
     data() {
-        return {
-            name: '',
-            email: '',
-            role: ''
-        };
+        return {};
     },
 
     mounted() {
@@ -58,6 +59,11 @@ export default {
             this.extractUserData(this.userData)
         }
         console.log(this.userData)
+
+        this.$store.dispatch('fetchAppointmentList');
+        if (this.AppointmentList) {
+            console.log(this.AppointmentList)
+        }
     },
 
     methods: {
@@ -78,6 +84,10 @@ export default {
     computed: {
         userData() {
             return this.$store.getters.getUserData;
+        },
+
+        appointmentList() {
+            return this.$store.getters.getAppointmentList;
         }
     },
 }

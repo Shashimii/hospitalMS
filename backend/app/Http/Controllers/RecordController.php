@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Record;
+
+class RecordController extends Controller
+{
+    
+    public function fetchAll() {
+        $records = Record::latest()->get();
+        return response()->json($records);
+    }
+}

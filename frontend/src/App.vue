@@ -20,6 +20,10 @@
   margin: 0;
 }
 
+main {
+  overflow-y: auto;
+}
+
 nav {
   display: flex;
   flex-direction: column;

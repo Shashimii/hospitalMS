@@ -6,30 +6,38 @@
     <div class="content">
         <div class="content-header">
             <h2>List of Registered Patients</h2>
+            <button class="form-btn" @click="toNew">New Patient</button>
         </div>
 
         <div class="item-group">
             <table class="styled-table">
-                <thead>
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Patient Email</th>
+                    <th>Patient Contact</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template v-if="patientList.length === 0">
                     <tr>
-                        <th>Patient Name</th>
-                        <th>Patient Email</th>
-                        <th>Patient Contact Number</th>
+                        <td colspan="4" style="text-align: center">There is No Patient 💫</td>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Lorem</td>
-                        <td>Ipsum@gmail.com</td>
-                        <td>09999026111</td>
+                </template>
+                <template v-else>
+                    <tr v-for="patientList in patientList" :key="patientList.id">
+                        <td>{{ patientList.name }}</td>
+                        <td>{{ patientList.email }}</td>
+                        <td>{{ patientList.contact }}</td>
+                        <td>
+                            <button class="edit-btn" @click="toEdit(patientList.id)">📝 Edit</button>
+                            <button class="delete-btn" @click="toDelete(patientList.id)">🗑️ Delete</button>
+                        </td>
                     </tr>
-                    <tr>
-                        <td>Lorem</td>
-                        <td>Ipsum@gmail.com</td>
-                        <td>09999026111</td>
-                    </tr>
-                </tbody>
-            </table>
+                </template>
+            </tbody>
+        </table>
         </div>
     </div>
 </template>
@@ -38,20 +46,20 @@
 export default {
     name: 'PatientComponent',
     data() {
-        return {
-            name: '',
-            email: '',
-            role: ''
-        };
+        return {};
     },
 
     mounted() {
         this.$store.dispatch('loadUserData');
-
         if (this.userData) {
             this.extractUserData(this.userData)
         }
         console.log(this.userData)
+
+        this.$store.dispatch('fetchPatientList');
+        if (this.fetchPatientList) {
+            console.log(this.fetchPatientList)
+        }
     },
 
     methods: {
@@ -66,12 +74,30 @@ export default {
             } else {
                 this.role = 'Patient';
             }
+        },
+
+        toNew() {
+            this.$router.push('/patient-new')
+        },
+
+        toEdit(patientId) {
+            this.$router.push('/patient-edit' + patientId)
+        },
+
+        toDelete(patientId) {
+            this.$store.dispatch('deletePatient', patientId);
         }
+
+
     },
 
     computed: {
         userData() {
             return this.$store.getters.getUserData;
+        },
+
+        patientList() {
+            return this.$store.getters.getPatientList;
         }
     },
 }
@@ -87,6 +113,11 @@ export default {
     display: flex;
     flex: 1;
     flex-direction: column;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
 }
 
 .styled-table {

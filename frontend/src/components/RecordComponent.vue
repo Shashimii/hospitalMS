@@ -1,40 +1,39 @@
 <template>
     <div class="header">
-        <h1>Doctors</h1>
+        <h1>Medical Records</h1>
     </div>
 
     <div class="content">
         <div class="content-header">
-            <h2>List of Registered Doctors</h2>
-            <button class="form-btn" @click="toNew">New Doctor</button>
+            <h2>Patients Diagnosis</h2>
         </div>
 
         <div class="item-group">
             <table class="styled-table">
                 <thead>
                     <tr>
-                        <th>Doctor Name</th>
-                        <th>Doctor Email</th>
-                        <th>Doctor Contact</th>
-                        <th>Doctor Profession</th>
+                        <th>Patient Name</th>
+                        <th>Diagnosis</th>
+                        <th>Doctor</th>
+                        <th>Date Diagnosed</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <template v-if="doctorList.length === 0">
+                    <template v-if="recordList.length === 0">
                         <tr>
-                            <td colspan="4" style="text-align: center">There is No Doctor 💫</td>
+                            <td colspan="4" style="text-align: center">There is No Diagnosis 💫</td>
                         </tr>
                     </template>
                     <template v-else>
-                        <tr v-for="doctorList in doctorList" :key="doctorList.id">
-                            <td>{{ doctorList.name }}</td>
-                            <td>{{ doctorList.email }}</td>
-                            <td>{{ doctorList.contact }}</td>
-                            <td>{{ doctorList.profession }}</td>
+                        <tr v-for="recordList in recordList" :key="recordList.id">
+                            <td>{{ recordList.patient }}</td>
+                            <td>{{ recordList.diagnosis }}</td>
+                            <td>{{ recordList.doctor }}</td>
+                            <td>{{ recordList.date }}</td>
                             <td>
-                                <button class="edit-btn" @click="toEdit(doctorList.id)">📝 Edit</button>
-                                <button class="delete-btn" @click="toDelete(doctorList.id)">🗑️ Delete</button>
+                                <button class="edit-btn" @click="toEdit(recordList.id)">📝 Edit</button>
+                                <button class="delete-btn" @click="toDelete(recordList.id)">🗑️ Delete</button>
                             </td>
                         </tr>
                     </template>
@@ -46,21 +45,22 @@
 
 <script>
 export default {
-    name: 'DoctorComponent',
+    name: 'RecordComponent',
     data() {
         return {};
     },
 
     mounted() {
         this.$store.dispatch('loadUserData');
+
         if (this.userData) {
             this.extractUserData(this.userData)
         }
         console.log(this.userData)
 
-        this.$store.dispatch('fetchDoctorList');
-        if (this.doctorList) {
-            console.log(this.doctorList)
+        this.$store.dispatch('fetchRecordList');
+        if (this.RecordList) {
+            console.log(this.RecordList)
         }
     },
 
@@ -76,21 +76,7 @@ export default {
             } else {
                 this.role = 'Patient';
             }
-        },
-
-        toNew() {
-            this.$router.push('/doctor-new')
-        },
-
-        toEdit(doctorId) {
-            this.$router.push('/doctor-edit' + doctorId)
-        },
-
-        toDelete(doctorId) {
-            this.$store.dispatch('deleteDoctor', doctorId);
         }
-
-
     },
 
     computed: {
@@ -98,8 +84,8 @@ export default {
             return this.$store.getters.getUserData;
         },
 
-        doctorList() {
-            return this.$store.getters.getDoctorList;
+        recordList() {
+            return this.$store.getters.getRecordList;
         }
     },
 }
@@ -115,11 +101,6 @@ export default {
     display: flex;
     flex: 1;
     flex-direction: column;
-}
-
-.content-header {
-    display: flex;
-    justify-content: space-between;
 }
 
 .styled-table {

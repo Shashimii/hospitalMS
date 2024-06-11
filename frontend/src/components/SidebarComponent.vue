@@ -7,6 +7,7 @@
         <router-link to="/patient">Patients</router-link>
         <router-link to="/doctor">Doctors</router-link>
         <router-link to="/appointment">Appointments</router-link>
+        <router-link to="/medical-records">Medical Records</router-link>
         <router-link to="/profile">Profile Settings</router-link>
     </nav>
     <div class="button">

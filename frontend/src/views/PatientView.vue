@@ -43,6 +43,7 @@ export default {
     gap: 20px;
     padding-block: 2%;
     padding-inline: 2%;
+    overflow-y: auto;
 }
 
 

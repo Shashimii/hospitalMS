@@ -1,22 +1,18 @@
 <template>
     <div class="container">
         <form @submit.prevent="register" class="form">
-        <h1>New Doctor</h1>
+        <h1>New Patient</h1>
         <div class="form-group">
-            <label>Doctor Name</label>
+            <label>Patient Name</label>
             <input type="text" v-model="name" placeholder="Enter Name" required>
         </div>
         <div class="form-group">
-            <label>Doctor Email</label>
+            <label>Patient Email</label>
             <input type="text" v-model="email" placeholder="Enter Email" required>
         </div>
         <div class="form-group">
-            <label>Doctor Contact</label>
+            <label>Patient Contact</label>
             <input type="text" v-model="contact" placeholder="Enter Contact" required>
-        </div>
-        <div class="form-group">
-            <label>Doctor Profession</label>
-            <input type="text" v-model="profession" placeholder="Enter Profession" required>
         </div>
         <div class="form-group">
             <label>Password</label>
@@ -24,11 +20,11 @@
         </div>
         <div class="form-group">
             <label>Role</label>
-            <input type="text" placeholder="Enter Role" value="Doctor" readonly required>
+            <input type="text" placeholder="Enter Role" value="Patient" readonly required>
         </div>
         <div class="form-nav">
             <button class="form-btn" type="submit">Add Doctor</button>
-            <p>not sure in adding new doctor ? you can return <a href="/doctor">here</a></p>
+            <p>not sure in adding new patient ? you can return <a href="/patient">here</a></p>
         </div>
     </form>
     </div>
@@ -38,15 +34,14 @@
 import axios from 'axios';
 
 export default {
-    name: 'NewDoctor',
+    name: 'NewPatient',
     data() {
         return {
             name: '',
             email: '',
             contact: '',
-            profession: '',
             password: '',
-            role: '2',
+            role: '3',
         };
     },
     methods: {
@@ -56,17 +51,16 @@ export default {
                     name: this.name,
                     email: this.email,
                     contact: this.contact,
-                    profession: this.profession,
                     password: this.password,
                     role: this.role,
                 });
 
-                alert('New Doctor Added');
-                this.$router.push('/doctor')
+                alert('New Patient Added');
+                this.$router.push('/patient')
                 console.log('Success', response.data);
             } catch (error){
                 console.error('register failed:', error.response.data);
-                alert('Incorrect Doctor Credentials Format');
+                alert('Incorrect Patient Credentials Format');
             }
         }
     }
