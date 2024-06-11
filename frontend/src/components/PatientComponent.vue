@@ -1,12 +1,14 @@
 <template>
     <div class="header">
-        <h1>Doctors</h1>
+        <h1>Patients</h1>
     </div>
 
     <div class="content">
         <div class="content-header">
             <h2>List of Registered Patients</h2>
-            <button class="form-btn" @click="toNew">New Patient</button>
+            <template v-if="this.role === 'Admin'">
+                <button class="form-btn" @click="toNew">New Patient</button>
+            </template>
         </div>
 
         <div class="item-group">
@@ -32,7 +34,9 @@
                         <td>{{ patientList.contact }}</td>
                         <td>
                             <button class="edit-btn" @click="toEdit(patientList.id)">📝 Edit</button>
-                            <button class="delete-btn" @click="toDelete(patientList.id)">🗑️ Delete</button>
+                            <template v-if="this.role === 'Admin'">
+                                <button class="delete-btn" @click="toDelete(patientList.id)">🗑️ Delete</button>
+                            </template>
                         </td>
                     </tr>
                 </template>
@@ -46,7 +50,9 @@
 export default {
     name: 'PatientComponent',
     data() {
-        return {};
+        return {
+            role: ''
+        };
     },
 
     mounted() {

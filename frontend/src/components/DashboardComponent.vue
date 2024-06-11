@@ -10,16 +10,34 @@
         </div>
 
         <div class="item-group">
-            <div class="item">
-                <nav>
-                    <router-link to="/doctor">View Doctors</router-link>
-                </nav>
-            </div>
-            <div class="item">
-                <nav>
-                    <router-link to="/patient">View Patients</router-link>
-                </nav>
-            </div>
+            <template v-if="this.role === 'Admin' || this.role === 'Doctor'">
+                <div class="item">
+                    <nav>
+                        <router-link to="/appointment">View Appointments</router-link>
+                    </nav>
+                </div>
+            </template>
+            <template v-if="this.role === 'Admin'">
+                <div class="item">
+                    <nav>
+                        <router-link to="/doctor">View Doctors</router-link>
+                    </nav>
+                </div>
+            </template>
+            <template v-if="this.role === 'Admin'">
+                <div class="item">
+                    <nav>
+                        <router-link to="/patient">View Patients</router-link>
+                    </nav>
+                </div>
+            </template>
+            <template v-else-if="this.role === 'Patient'">
+                <div class="item">
+                    <nav>
+                        <router-link to="/appointment-new">Book An Appointment</router-link>
+                    </nav>
+                </div>
+            </template>
             <div class="item">
                 <nav>
                     <router-link to="/profile">Profile Settings</router-link>

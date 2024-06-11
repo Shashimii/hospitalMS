@@ -4,8 +4,15 @@
     </div>
     <nav>
         <router-link to="/">Dashboard</router-link>
-        <router-link to="/patient">Patients</router-link>
-        <router-link to="/doctor">Doctors</router-link>
+        <template v-if="this.role === 'Admin'">
+            <router-link to="/patient">Patients</router-link>
+        </template>
+        <template v-else-if="this.role === 'Doctor'">
+            <router-link to="/patient">Patients</router-link>
+        </template>
+        <template v-if="this.role === 'Admin'">
+            <router-link to="/doctor">Doctors</router-link>
+        </template>
         <router-link to="/appointment">Appointments</router-link>
         <router-link to="/medical-records">Medical Records</router-link>
         <router-link to="/profile">Profile Settings</router-link>
@@ -20,6 +27,22 @@ import axios from 'axios';
 
 export default {
     name: 'SidebarComponent',
+
+    data() {
+        return {
+            role: ''
+        }
+    },
+
+    mounted() {
+        this.$store.dispatch('loadUserData');
+
+        if (this.userData) {
+            this.extractUserData(this.userData)
+        }
+        console.log(this.userData)
+    },
+
 
     methods: {
         async logout() {
@@ -38,8 +61,28 @@ export default {
                 console.error('Logout failed:', error.response.data);
                 alert('Logout failed: ' + error.response.data.message);
             }
+        },
+
+        extractUserData(userData) {
+            this.name = userData.name;
+            this.email = userData.email;
+
+            if (this.userData.role === '1') {
+                this.role = 'Admin';
+            } else if (this.userData.role === '2') {
+                this.role = 'Doctor';
+            } else {
+                this.role = 'Patient';
+            }
+        },
+    },
+
+    computed: {
+        userData() {
+            return this.$store.getters.getUserData;
         }
-    }
+    },
 }
 
 </script>
+
