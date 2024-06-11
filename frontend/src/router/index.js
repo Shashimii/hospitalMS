@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
-import HomeView from '../views/HomeView.vue'
+import DashboardView from '../views/DashboardView.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/login',
     name: 'login',
     component: LoginView
   },
@@ -15,18 +15,10 @@ const routes = [
     component: RegisterView
   },
   {
-    path: '/home',
-    name: 'home',
-    component: HomeView,
+    path: '/',
+    name: 'dashboard',
+    component: DashboardView,
     meta: {requiresAuth: true}
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   }
 ]
 
@@ -44,8 +36,8 @@ router.beforeEach((to, from, next) => {
     console.log('No token found, redirecting to login')
     next({ name: 'login' })
   } else if ((to.name === 'login' || to.name === 'register') && token) {
-    console.log('Token found, redirecting to home')
-    next({ name: 'home' })
+    console.log('Token found, redirecting to dashboard')
+    next({ name: 'dashboard' })
   } else {
     next()
   }
