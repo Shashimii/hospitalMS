@@ -31,6 +31,7 @@ Route::get('/fetchPatient', [UserController::class, 'fetchPatient']);
 
 // Doctor
 Route::get('/fetchDoctor', [UserController::class, 'fetchDoctor']);
+Route::delete('/deleteDoctor/{id}', [UserController::class, 'destroy']);
 
 // Appointment
 

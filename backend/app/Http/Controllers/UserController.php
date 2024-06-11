@@ -17,4 +17,10 @@ class UserController extends Controller
         $users = User::where('role', '3')->latest()->get();
         return response()->json($users);
     }
+
+    public function destroy($id){
+        $users = User::find($id);
+        $users->delete();
+        return response()->json(null, 204);
+    }
 }
