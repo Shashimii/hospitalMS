@@ -1,37 +1,43 @@
 <template>
     <div class="header">
-        <h1>Dashboard</h1>
+        <h1>Profile Settings</h1>
     </div>
 
     <div class="content">
         <div class="content-header">
-            <h1>Hello {{ role }} {{ name }}</h1>
-            <p>{{ email }}</p>
+            <h2>Profile Info</h2>
         </div>
 
         <div class="item-group">
-            <div class="item">
-                <nav>
-                    <router-link to="/doctor">View Doctors</router-link>
-                </nav>
-            </div>
-            <div class="item">
-                <nav>
-                    <router-link to="/patient">View Patients</router-link>
-                </nav>
-            </div>
-            <div class="item">
-                <nav>
-                    <router-link to="/profile">Profile Settings</router-link>
-                </nav>
-            </div>
+            <form @submit.prevent="login" class="form">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" placeholder="Enter Name" v-model="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" placeholder="Enter Email" v-model="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Role</label>
+                    <input type="text" placeholder="Enter Role" v-model="role" readonly required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="text" placeholder="Enter New Password" v-model="password" required>
+                </div>
+                <div class="form-nav">
+                    <button class="form-btn" type="submit">Save Changes</button>
+                    <p>new password is required to save changes</p>
+                </div>
+            </form>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'DashboardComponent',
+    name: 'ProfileComponent',
     data() {
         return {
             name: '',
@@ -88,18 +94,10 @@ export default {
     display: flex;
     flex: 1;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
+    padding-inline: 20%;
 }
 
-.item {
-    background-color: #42b983;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20%;
-    height: 35%;
-    border-radius: 5px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5); 
-}
+
 </style>
   

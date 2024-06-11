@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import DashboardView from '../views/DashboardView.vue'
+import DoctorView from '../views/DoctorView.vue'
+import PatientView from '../views/PatientView.vue'
+import ProfileView from '../views/ProfileView.vue'
 
 const routes = [
   {
@@ -19,7 +22,26 @@ const routes = [
     name: 'dashboard',
     component: DashboardView,
     meta: {requiresAuth: true}
-  }
+  },
+  {
+    path: '/doctor',
+    name: 'doctor',
+    component: DoctorView,
+    meta: {requiresAuth: true}
+  },
+  {
+    path: '/patient',
+    name: 'patient',
+    component: PatientView,
+    meta: {requiresAuth: true}
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: ProfileView,
+    meta: {requiresAuth: true}
+  },
+  
 ]
 
 const router = createRouter({

@@ -2,15 +2,15 @@
     <div class="header">
         <h1>Hospital MS</h1>
     </div>
-    <div class="links">
-        <div><router-link to="/register">Dashboard</router-link></div>
-        <div><router-link to="/">Patients</router-link></div>
-        <div><router-link to="/">Doctors</router-link></div>
-        <div><router-link to="/">Appointments</router-link></div>
-        <div><router-link to="/">Manage User</router-link></div>
-    </div>
+    <nav>
+        <router-link to="/">Dashboard</router-link>
+        <router-link to="/patient">Patients</router-link>
+        <router-link to="/doctor">Doctors</router-link>
+        <router-link to="/appointment">Appointments</router-link>
+        <router-link to="/profile">Profile Settings</router-link>
+    </nav>
     <div class="button">
-        <button @click="logout">Logout</button>
+        <button class="danger-btn" @click="logout">Logout</button>
     </div>
 </template>
 

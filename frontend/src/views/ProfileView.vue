@@ -4,19 +4,19 @@
             <SidebarComponent></SidebarComponent>
         </div>
         <div class="main">
-            <DashboardComponent></DashboardComponent>
+            <ProfileComponent></ProfileComponent>
         </div>
     </div>
 </template>
 
 <script>
-import DashboardComponent from '@/components/DashboardComponent.vue'
+import ProfileComponent from '@/components/ProfileComponent.vue'
 import SidebarComponent from '@/components/SidebarComponent.vue'
 
 export default {
     name: 'DashboardView',
     components: {
-        DashboardComponent,
+        ProfileComponent,
         SidebarComponent
     },
 }
@@ -44,7 +44,7 @@ export default {
     gap: 20px;
     padding-block: 2%;
     padding-inline: 2%;
+    overflow-y: auto;
 }
-
 
 </style>

@@ -20,12 +20,15 @@
 }
 
 nav {
-  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 nav a {
   font-weight: bold;
   color: #2c3e50;
+  text-decoration: none;
 }
 
 nav a.router-link-exact-active {
@@ -72,4 +75,55 @@ select:focus {
 select option {
   padding: 10px;
 }
+
+.form {
+    display: flex;
+    flex:1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 45%;
+    width: 30%;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+}
+
+.form-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.form-btn:hover {
+  background-color: #0056b3; 
+}
+
+.danger-btn {
+  background-color: #ff5555;
+  color: white;
+  border: none; 
+  padding: 10px 20px;
+  border-radius: 5px; 
+  cursor: pointer; 
+}
+
+.danger-btn:hover {
+  background-color: #ff3333; 
+}
+
 </style>
