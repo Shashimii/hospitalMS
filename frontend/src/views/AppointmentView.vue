@@ -4,19 +4,19 @@
             <SidebarComponent></SidebarComponent>
         </div>
         <div class="main">
-            <PatientComponent></PatientComponent>
+            <AppointmentComponent></AppointmentComponent>
         </div>
     </div>
 </template>
 
 <script>
-import PatientComponent from '@/components/PatientComponent.vue'
+import AppointmentComponent from '@/components/AppointmentComponent.vue'
 import SidebarComponent from '@/components/SidebarComponent.vue'
 
 export default {
     name: 'PatientView',
     components: {
-        PatientComponent,
+        AppointmentComponent,
         SidebarComponent
     },
 }

@@ -5,6 +5,7 @@ import DashboardView from '../views/DashboardView.vue'
 import DoctorView from '../views/DoctorView.vue'
 import PatientView from '../views/PatientView.vue'
 import ProfileView from '../views/ProfileView.vue'
+import AppointmentView from '../views/AppointmentView.vue'
 
 const routes = [
   {
@@ -39,6 +40,12 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: ProfileView,
+    meta: {requiresAuth: true}
+  },
+  {
+    path: '/appointment',
+    name: 'appointment',
+    component: AppointmentView,
     meta: {requiresAuth: true}
   },
   

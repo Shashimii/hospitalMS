@@ -5,28 +5,28 @@
 
     <div class="content">
         <div class="content-header">
-            <h2>List of Registered Doctors</h2>
+            <h2>List of Registered Patients</h2>
         </div>
 
         <div class="item-group">
             <table class="styled-table">
                 <thead>
                     <tr>
-                        <th>Doctor Name</th>
-                        <th>Doctor Email</th>
-                        <th>Doctor Profession</th>
+                        <th>Patient Name</th>
+                        <th>Patient Email</th>
+                        <th>Patient Contact Number</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Dr Lorem</td>
+                        <td>Lorem</td>
                         <td>Ipsum@gmail.com</td>
-                        <td>Lorem Ipsum Mastery</td>
+                        <td>09999026111</td>
                     </tr>
                     <tr>
-                        <td>Dr Lorem</td>
+                        <td>Lorem</td>
                         <td>Ipsum@gmail.com</td>
-                        <td>Lorem Ipsum Mastery</td>
+                        <td>09999026111</td>
                     </tr>
                 </tbody>
             </table>
@@ -36,7 +36,7 @@
 
 <script>
 export default {
-    name: 'DoctorComponent',
+    name: 'PatientComponent',
     data() {
         return {
             name: '',
