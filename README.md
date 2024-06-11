@@ -13,9 +13,12 @@ Clone or Unzip the file
 cd backend
 composer install
 composer require laravel/sanctum
+php artisan migrate:fresh
+php artisan db:seed
 
 ```
 - create .env file mysql as database
+- copy the contents of .env-example then paste it on .env file
 - database name "hospitalms"
 ## Frontend Setup
 ```
