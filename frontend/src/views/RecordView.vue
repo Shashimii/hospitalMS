@@ -29,14 +29,6 @@ export default {
     height: 100vh;
 }
 
-.sidebar {
-    display: grid;
-    grid-template-rows: 0.2fr 1fr 0.2fr;
-    padding-block: 10%;
-    padding-inline: 10%;
-    border-right: 1px solid black;
-}
-
 .main {
     display: flex;
     flex-direction: column;

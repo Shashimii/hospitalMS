@@ -32,8 +32,9 @@ nav {
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: white;
   text-decoration: none;
+  font-size: 20px;
 }
 
 nav a.router-link-exact-active {
@@ -92,6 +93,18 @@ select {
 select option {
   padding: 10px;
 }
+
+.sidebar {
+  display: grid;
+  grid-template-rows: 0.2fr 1fr 0.2fr;
+  padding-block: 10%;
+  padding-inline: 10%;
+  background-color: #373A40;
+  color: white;
+  box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.5); 
+}
+
+
 
 .form {
     display: flex;
