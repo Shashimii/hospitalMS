@@ -1,7 +1,7 @@
 
 # Hospital Management System
 
-Final Case Study ITEW-4 PNC
+Final Case Study ITEW-6 PNC
 
 
 ## Installation
