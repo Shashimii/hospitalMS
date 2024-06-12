@@ -17,14 +17,23 @@
                         <th>Appointment Doctor</th>
                         <th>Appointment Patient</th>
                         <th>Appointment Schedule</th>
-                        <th>Actions</th>
+                        <template v-if="this.role != '1'">
+                            <th>Actions</th>
+                        </template>
                     </tr>
                 </thead>
                 <tbody>
                     <template v-if="appointmentList.length === 0">
-                        <tr>
-                            <td colspan="6" style="text-align: center">There is No Appointments 💫</td>
-                        </tr>
+                        <template v-if="this.role != '1'">
+                            <tr>
+                                <td colspan="6" style="text-align: center">There is No Appointments 💫</td>
+                            </tr>
+                        </template>
+                        <template v-else>
+                            <tr>
+                                <td colspan="5" style="text-align: center">There is No Appointments 💫</td>
+                            </tr>
+                        </template>
                     </template>
                     <template v-else>
                         <tr v-for="appointmentList in appointmentList" :key="appointmentList.id">
@@ -33,12 +42,14 @@
                             <td>{{ appointmentList.doctor }}</td>
                             <td>{{ appointmentList.patient }}</td>
                             <td>{{ appointmentList.schedule }}</td>
+                            <template v-if="this.role === '2'">
                             <td>
-                                <template v-if="this.role === '2'">
-                                    <button class="edit-btn" @click="toDiagnose(appointmentList.id)">🩺 Diagnose</button>
+                                <button class="edit-btn" @click="toDiagnose(appointmentList.id)">🩺 Diagnose</button>
+                                <template v-if="this.role != '1'">
+                                    <button class="delete-btn" @click="toDelete(appointmentList.id)">❌ Cancel</button>
                                 </template>
-                                <button class="delete-btn" @click="toDelete(appointmentList.id)">❌ Cancel</button>
                             </td>
+                        </template>
                         </tr>
                     </template>
                 </tbody>

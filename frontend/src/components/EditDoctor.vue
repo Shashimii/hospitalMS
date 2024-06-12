@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <form @submit.prevent="updateDoctor" class="form">
-        <h1>New Doctor</h1>
+        <h1>Edit Doctor</h1>
         <div class="form-group">
             <label>Doctor Name</label>
             <input type="text" v-model="doctorData.name" placeholder="Enter Name" required>
