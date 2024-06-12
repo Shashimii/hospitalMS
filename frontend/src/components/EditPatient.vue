@@ -24,7 +24,7 @@
         </div>
         <div class="form-nav">
             <button class="form-btn" type="submit">Edit Patient</button>
-            <p>not sure in editing existing patient ? you can return <a href="/patient">here</a></p>
+            <p>Not sure in editing existing patient? You can return <a href="/patient">here</a></p>
         </div>
     </form>
     </div>

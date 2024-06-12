@@ -1,5 +1,8 @@
 <template>
     <form @submit.prevent="login" class="form">
+        <a href="#">
+            <img src="@/assets/logo-1.png" alt="Logo" class="logo">
+        </a>
         <h1>Login</h1>
         <div class="form-group">
             <label>Email</label>
@@ -56,3 +59,11 @@ export default {
 }
 
 </script>
+
+<style scoped>
+.logo {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+</style>

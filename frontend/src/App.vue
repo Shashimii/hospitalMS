@@ -38,7 +38,7 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #1cbdcf;
 }
 
 /* Input Field Styles */
@@ -133,14 +133,15 @@ select option {
 .form-btn {
     padding: 10px 20px;
     border: none;
-    background-color: #007bff;
+    background-color: #1cbdcf;
     color: white;
     cursor: pointer;
     border-radius: 5px;
+    font-weight: bold;
 }
 
 .form-btn:hover {
-  background-color: #0056b3; 
+  background-color: #0d5466; 
 }
 
 .danger-btn {

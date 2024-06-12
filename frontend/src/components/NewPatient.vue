@@ -23,8 +23,8 @@
             <input type="text" placeholder="Enter Role" value="Patient" readonly required>
         </div>
         <div class="form-nav">
-            <button class="form-btn" type="submit">Add Doctor</button>
-            <p>not sure in adding new patient ? you can return <a href="/patient">here</a></p>
+            <button class="form-btn" type="submit">Add Patient</button>
+            <p>Not sure in adding new patient? You can return <a href="/patient">here</a></p>
         </div>
     </form>
     </div>

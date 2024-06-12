@@ -110,7 +110,7 @@ export default {
 }
 
 .item {
-    background-color: #42b983;
+    background-color: #19819c;
     display: flex;
     align-items: center;
     justify-content: center;

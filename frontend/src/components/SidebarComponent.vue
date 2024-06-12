@@ -1,6 +1,8 @@
 <template>
     <div class="header">
-        <h1>Hospital MS</h1>
+        <a href="#">
+            <img src="@/assets/logo-2.png" alt="Logo" class="logo">
+        </a>
     </div>
     <nav>
         <router-link to="/">Dashboard</router-link>
@@ -86,3 +88,11 @@ export default {
 
 </script>
 
+<style scoped>
+.logo {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+}
+
+</style>

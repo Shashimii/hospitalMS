@@ -129,7 +129,7 @@ export default {
 }
 
 .styled-table thead tr {
-    background-color: #009879;
+    background-color: #1c8098;
     color: #ffffff;
     text-align: center;
 }
@@ -149,7 +149,7 @@ export default {
 }
 
 .styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+    border-bottom: 2px solid #1c8098;
 }
 
 .styled-table tbody tr:hover {
