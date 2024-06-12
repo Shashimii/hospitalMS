@@ -41,19 +41,30 @@ Route::patch('/updateDoctor/{id}', [UserController::class, 'updateDoctor']);
 Route::delete('/deleteDoctor/{id}', [UserController::class, 'destroyDoctor']);
 
 // Appointment
+// All
+Route::get('/fetchAppointments/{id}', [AppointmentController::class, 'fetchOwn']);
+
 // Admin
 Route::get('/fetchAppointments', [AppointmentController::class, 'fetchAll']);
 
 // Doctor
+Route::get('/findAppointment/{id}', [AppointmentController::class, 'findAppointment']);
 
 // Patient
-
+Route::post('/newAppointment', [AppointmentController::class, 'storeAppointment']);
+Route::delete('/deleteAppointment/{id}', [AppointmentController::class, 'destroyAppointment']);
 
 // Medical Record
 // Admin
 Route::get('/fetchRecords', [RecordController::class, 'fetchAll']);
 
 // Doctor
+Route::post('/newRecord', [RecordController::class, 'storeRecord']);
+Route::get('/findRecord/{id}', [RecordController::class, 'findRecord']);
+Route::patch('/updateRecord/{id}', [RecordController::class, 'updateRecord']);
 
 // Patient
+Route::get('/fetchRecords/{id}', [RecordController::class, 'fetchOwn']);
+
+
 

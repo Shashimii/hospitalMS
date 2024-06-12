@@ -16,14 +16,23 @@
                         <th>Diagnosis</th>
                         <th>Doctor</th>
                         <th>Date Diagnosed</th>
-                        <th>Actions</th>
+                        <template v-if="this.role === '2'">
+                            <th>Actions</th>
+                        </template>
                     </tr>
                 </thead>
                 <tbody>
                     <template v-if="recordList.length === 0">
-                        <tr>
-                            <td colspan="4" style="text-align: center">There is No Diagnosis 💫</td>
-                        </tr>
+                        <template v-if="this.role === '2'">
+                            <tr>
+                                <td colspan="5" style="text-align: center">There is No Diagnosis 💫</td>
+                            </tr>
+                        </template>
+                        <template v-else>
+                            <tr>
+                                <td colspan="4" style="text-align: center">There is No Diagnosis 💫</td>
+                            </tr>
+                        </template>
                     </template>
                     <template v-else>
                         <tr v-for="recordList in recordList" :key="recordList.id">
@@ -31,10 +40,11 @@
                             <td>{{ recordList.diagnosis }}</td>
                             <td>{{ recordList.doctor }}</td>
                             <td>{{ recordList.date }}</td>
-                            <td>
-                                <button class="edit-btn" @click="toEdit(recordList.id)">📝 Edit</button>
-                                <button class="delete-btn" @click="toDelete(recordList.id)">🗑️ Delete</button>
-                            </td>
+                            <template v-if="this.role === '2'">
+                                <td>
+                                    <button class="edit-btn" @click="toEdit(recordList.id)">📝 Edit</button>
+                                </td>
+                            </template>
                         </tr>
                     </template>
                 </tbody>
@@ -47,7 +57,9 @@
 export default {
     name: 'RecordComponent',
     data() {
-        return {};
+        return {
+            role: '',
+        };
     },
 
     mounted() {
@@ -55,12 +67,13 @@ export default {
 
         if (this.userData) {
             this.extractUserData(this.userData)
+            this.role = this.userData.role;
         }
-        console.log(this.userData)
 
-        this.$store.dispatch('fetchRecordList');
-        if (this.RecordList) {
-            console.log(this.RecordList)
+        if (this.role === '3') {
+            this.$store.dispatch('fetchRecordOwn', this.userData.id);
+        } else {
+            this.$store.dispatch('fetchRecordList');
         }
     },
 
@@ -76,7 +89,11 @@ export default {
             } else {
                 this.role = 'Patient';
             }
-        }
+        },
+
+        toEdit(recordId) {
+            this.$router.push('/record-edit' + recordId)
+        },
     },
 
     computed: {

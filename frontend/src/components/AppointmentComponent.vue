@@ -23,7 +23,7 @@
                 <tbody>
                     <template v-if="appointmentList.length === 0">
                         <tr>
-                            <td colspan="4" style="text-align: center">There is No Doctor 💫</td>
+                            <td colspan="6" style="text-align: center">There is No Appointments 💫</td>
                         </tr>
                     </template>
                     <template v-else>
@@ -34,8 +34,10 @@
                             <td>{{ appointmentList.patient }}</td>
                             <td>{{ appointmentList.schedule }}</td>
                             <td>
-                                <button class="edit-btn" @click="toEdit(appointmentList.id)">📝 Edit</button>
-                                <button class="delete-btn" @click="toDelete(appointmentList.id)">🗑️ Delete</button>
+                                <template v-if="this.role === '2'">
+                                    <button class="edit-btn" @click="toDiagnose(appointmentList.id)">🩺 Diagnose</button>
+                                </template>
+                                <button class="delete-btn" @click="toDelete(appointmentList.id)">❌ Cancel</button>
                             </td>
                         </tr>
                     </template>
@@ -49,7 +51,12 @@
 export default {
     name: 'AppointmentComponent',
     data() {
-        return {};
+        return {
+            id: '',
+            name: '',
+            email: '',
+            role: ''
+        };
     },
 
     mounted() {
@@ -59,25 +66,31 @@ export default {
             this.extractUserData(this.userData)
         }
         console.log(this.userData)
-
-        this.$store.dispatch('fetchAppointmentList');
-        if (this.AppointmentList) {
-            console.log(this.AppointmentList)
+        
+        if (this.role != '1') {
+            this.$store.dispatch('fetchAppointmentOwn', this.id);
+        } else {
+            this.$store.dispatch('fetchAppointmentList');
         }
+
+        console.log(this.id);
+
     },
 
     methods: {
         extractUserData(userData) {
+            this.id = userData.id;
             this.name = userData.name;
             this.email = userData.email;
+            this.role =userData.role;
+        },
 
-            if (this.userData.role === '1') {
-                this.role = 'Admin';
-            } else if (this.userData.role === '2') {
-                this.role = 'Doctor';
-            } else {
-                this.role = 'Patient';
-            }
+        toDiagnose(appointmentId) {
+            this.$router.push('patient-diagnose' + appointmentId)
+        },
+
+        toDelete(appointmentId) {
+            this.$store.dispatch('deleteAppointment', appointmentId);
         }
     },
 

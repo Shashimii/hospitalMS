@@ -43,12 +43,29 @@ nav a.router-link-exact-active {
 /* Input Field Styles */
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="date"]  {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
   width: 100%;
   box-sizing: border-box; 
+  font-family: Arial, sans-serif;
+}
+
+textarea {
+    font-family: Arial, sans-serif;
+    height: 100px;
+    padding: 7px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 14px;
+    resize: vertical;
+}
+textarea:focus {
+    border-color: #000000;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0,123,255,0.2);
 }
 
 /* Label Styles */
@@ -70,11 +87,6 @@ select {
   background-repeat: no-repeat;
   background-position-x: calc(100% - 10px);
   background-position-y: center;
-}
-
-select:hover,
-select:focus {
-  border-color: #007bff; 
 }
 
 select option {

@@ -81,7 +81,28 @@ const routes = [
     name: 'EditPatient',
     component: () => import('../components/EditPatient.vue'),
     meta: { requiresAuth: true }
-  }
+  },
+
+  {
+    path: '/appointment-new',
+    name: 'NewAppointment',
+    component: () => import('../components/NewAppointment.vue'),
+    meta: {requiresAuth: true}
+  },
+  {
+    path: '/patient-diagnose:appointmentId',
+    name: 'DiagnosePatient',
+    component: () => import('../components/NewDiagnose.vue'),
+    meta: {requiresAuth: true}
+  },
+
+  {
+    path: '/record-edit:recordId',
+    name: 'EditRecord',
+    component: () => import('../components/EditRecord.vue'),
+    meta: {requiresAuth: true}
+  },
+
   
 ]
 

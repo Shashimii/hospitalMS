@@ -12,8 +12,10 @@ export default createStore({
     finded_patient: [],
 
     appointmentList: [],
+    finded_appointment: [],
 
     recordList: [],
+    finded_record: [],
   },
   getters: {
     getUserData: state => state.userData,
@@ -25,8 +27,10 @@ export default createStore({
     getPatient: state => state.finded_patient,
 
     getAppointmentList: state => state.appointmentList,
+    getAppointment: state => state.finded_appointment,
 
     getRecordList: state => state.recordList,
+    getRecord: state => state.finded_record
   },
   mutations: {
     set_user_data(state, userData) {
@@ -46,7 +50,7 @@ export default createStore({
       if (index !== -1) {
           state.finded_doctor.splice(index, 1, updatedDoctorData);
       } else {
-          console.error('User not found');
+          console.error('doctor not found');
       }
     },
 
@@ -67,7 +71,7 @@ export default createStore({
       if (index !== -1) {
           state.finded_patient.splice(index, 1, updatedPatientData);
       } else {
-          console.error('User not found');
+          console.error('patient not found');
       }
     },
 
@@ -79,9 +83,36 @@ export default createStore({
       state.appointmentList = appointmentList;
     },
 
+    finded_appointment(state, finded_appointment) {
+      state.finded_appointment = finded_appointment;
+    },
+
+    delete_appointment(state, appointmentId) {
+      state.appointmentList = state.appointmentList.filter(appointmentList => appointmentList.id !== appointmentId);
+    },
+
+    remove_appointment(state, appointmentId) {
+      state.appointmentList = state.appointmentList.filter(appointmentList => appointmentList.id !== appointmentId);
+    },
+
+
     set_record_list(state, recordList) {
       state.recordList = recordList;
     },
+
+    finded_record(state, finded_record) {
+      state.finded_record = finded_record;
+    },
+
+    update_record(state, updatedRecord) {
+      const index = state.finded_record.findIndex(user => user.id === updatedRecord.id);
+      if (index !== -1) {
+          state.finded_record.splice(index, 1, updatedRecord);
+      } else {
+          console.error('record not found');
+      }
+    },
+
   },
   actions: {
     fetchUserInfo({ commit }, userData) {
@@ -180,6 +211,33 @@ export default createStore({
       }
     },
 
+    async fetchAppointmentOwn({ commit }, id) {
+      try {
+        const response = await axios.get(`http://127.0.0.1:8000/api/fetchAppointments/${id}`);
+        commit('set_appointment_list', response.data);
+      } catch(error) {
+        console.log('unable to fetch appointment own: ', error.message)
+      }
+    },
+
+    async findAppointment({ commit }, appointmentId) {
+      try {
+        const response = await axios.get(`http://127.0.0.1:8000/api/findAppointment/${appointmentId}`);
+        commit('finded_appointment', response.data);
+      } catch (error) {
+        console.log('unable to find appointment', error.message)
+      }
+    },
+
+    async deleteAppointment({ commit }, appointmentId) {
+      try {
+        await axios.delete(`http://127.0.0.1:8000/api/deleteAppointment/${appointmentId}`);
+        commit('delete_appointment', appointmentId);
+      } catch (error) {
+        console.log('unable to delete', error.message)
+      }
+    },
+
     async fetchRecordList({ commit }) {
       try {
         const response = await axios.get('http://127.0.0.1:8000/api/fetchRecords');
@@ -189,7 +247,39 @@ export default createStore({
       }
     },
 
+    async findRecord({ commit }, recordId) {
+      try {
+        const response = await axios.get(`http://127.0.0.1:8000/api/findRecord/${recordId}`);
+        commit('finded_record', response.data);
+      } catch (error) {
+        console.log('unable to find record', error.message)
+      }
+    },
+
+    async fetchRecordOwn({ commit }, id) {
+      try {
+        const response = await axios.get(`http://127.0.0.1:8000/api/fetchRecords/${id}`);
+        commit('set_record_list', response.data);
+      } catch(error) {
+        console.log('unable to fetch record own: ', error.message)
+      }
+    },
+
+
+    async updateRecord({ commit }, record) {
+      const { id, ...updatedRecord } = record; 
+      try {
+          await axios.patch(`http://127.0.0.1:8000/api/updateRecord/${id}`, updatedRecord);
+          commit('update_record', record);
+      } catch (error) {
+          console.log('unable to edit', error.message)
+          console.log(id)
+      }
+    },
+
   },
   modules: {
   }
 })
+
+
