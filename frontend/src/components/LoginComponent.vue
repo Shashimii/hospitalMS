@@ -11,7 +11,7 @@
         </div>
         <div class="form-nav">
             <button class="form-btn" type="submit">Login</button>
-            <p>dont have an account ? you can register <a href="/register">here</a></p>
+            <p>this option is for developement mode only. register <a href="/register">here</a></p>
         </div>
     </form>
 </template>
