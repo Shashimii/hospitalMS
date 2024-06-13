@@ -30,9 +30,9 @@ npm install axios
 - https://github.com/arncar123/FinalCaseStudy/tree/master
 - https://github.com/arncar123/FinalCaseStudy
 - https://drive.google.com/file/d/1hnWYVw8dkewRyecIGHrMfpHrynzPqEZF/view?usp=sharing
-- 
+
 ## Members
 
 - Sam Reginald Besa => [@Shashimii](https://github.com/Shashimii)
 - Justine Dacocos => [@dacocosjustine](https://github.com/dacocosjustine)
--
+- membername => [@memberemail](https://gitlink)
