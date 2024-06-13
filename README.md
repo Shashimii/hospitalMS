@@ -3,6 +3,11 @@
 
 Final Case Study ITEW-6 PNC
 
+## Initial git and codes:
+https://github.com/dacocosjustine/finals-case-study.git
+https://github.com/arncar123/FinalCaseStudy/tree/master
+https://github.com/arncar123/FinalCaseStudy
+https://drive.google.com/file/d/1hnWYVw8dkewRyecIGHrMfpHrynzPqEZF/view?usp=sharing
 
 ## Installation
 
