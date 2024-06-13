@@ -3,12 +3,6 @@
 
 Final Case Study ITEW-6 PNC
 
-## Initial Codes Before Using Fixing Errors and using Vuex:
-- https://github.com/dacocosjustine/finals-case-study.git
-- https://github.com/arncar123/FinalCaseStudy/tree/master
-- https://github.com/arncar123/FinalCaseStudy
-- https://drive.google.com/file/d/1hnWYVw8dkewRyecIGHrMfpHrynzPqEZF/view?usp=sharing
-
 ## Installation
 
 Clone or Unzip the file
@@ -30,8 +24,14 @@ php artisan db:seed
 cd frontend
 npm install axios
 ```
-    
-## Authors
+## Initial Codes Before Using Fixing Errors and using Vuex:
+- https://github.com/dacocosjustine/finals-case-study.git
+- https://github.com/arncar123/FinalCaseStudy/tree/master
+- https://github.com/arncar123/FinalCaseStudy
+- https://drive.google.com/file/d/1hnWYVw8dkewRyecIGHrMfpHrynzPqEZF/view?usp=sharing
+```
+## Members
 
 - Sam Reginald Besa => [@Shashimii](https://github.com/Shashimii)
 - Justine Dacocos => [@dacocosjustine](https://github.com/dacocosjustine)
+-
