@@ -29,4 +29,4 @@ npm install axios
 ## Authors
 
 - Sam Reginald Besa => [@Shashimii](https://github.com/Shashimii)
-- Justine Dacocos
+- Justine Dacocos => [@dacocosjustine}(https://github.com/dacocosjustine)
