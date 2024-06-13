@@ -35,4 +35,4 @@ npm install axios
 
 - Sam Reginald Besa => [@Shashimii](https://github.com/Shashimii)
 - Justine Dacocos => [@dacocosjustine](https://github.com/dacocosjustine)
-- membername => [@memberemail](https://gitlink)
+- Justine Ivan ALmonte => [@jiralmonte](https://github.com/jiralmonte)
