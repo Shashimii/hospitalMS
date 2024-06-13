@@ -25,11 +25,12 @@ cd frontend
 npm install axios
 ```
 ## Initial Codes Before Using Fixing Errors and using Vuex:
+
 - https://github.com/dacocosjustine/finals-case-study.git
 - https://github.com/arncar123/FinalCaseStudy/tree/master
 - https://github.com/arncar123/FinalCaseStudy
 - https://drive.google.com/file/d/1hnWYVw8dkewRyecIGHrMfpHrynzPqEZF/view?usp=sharing
-```
+- 
 ## Members
 ```
 - Sam Reginald Besa => [@Shashimii](https://github.com/Shashimii)
